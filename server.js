@@ -47,7 +47,12 @@ router.post('/movies', (req, res) => {
     if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
         return res.status(400).json({ success: false, message: 'Missing required fields.' });
     }
-
+router.get('/movies', (req, res) => {
+    // Check if request body contains required fields
+    if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
+        return res.status(400).json({ success: false, message: 'Missing required fields.' });
+    }
+    
     const newMovie = new Movie({
         title: req.body.title,
         releaseDate: req.body.releaseDate,
