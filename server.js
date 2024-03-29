@@ -46,7 +46,7 @@ router.post('/movies', (req, res) => {
     // Check if request body contains required fields
     if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
         return res.status(400).json({ success: false, message: 'Missing required fields.' });
-    }});
+    }
      const newMovie = new Movie({
         title: req.body.title,
         releaseDate: req.body.releaseDate,
@@ -61,10 +61,11 @@ router.post('/movies', (req, res) => {
             .catch(error => {
                 res.status(500).json({ success: false, message: 'Failed to create movie.', error });
             });
-    
+});
+
 router.get('/movies', (req, res) => {
     // Check if request body contains required fields
-    if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
+    if (!req.query.title || !req.query.releaseDate || !req.query.genre || !req.query.actors) {
         return res.status(400).json({ success: false, message: 'Missing required fields.' }); 
     }});
 
