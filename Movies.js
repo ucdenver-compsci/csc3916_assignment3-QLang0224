@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-mongoose.connect(process.env.DB);
+mongoose.connect(MONGO_URI);
 
 // Movie schema
 var MovieSchema = new Schema({
