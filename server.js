@@ -116,7 +116,6 @@ router.delete('/movies/:id', (req, res) => {
     });
 });
 
-router.post('/signup', verifyToken, (req, res) => {
 router.post('/signup', function(req, res) {
     if (!req.body.username || !req.body.password) {
         res.json({success: false, msg: 'Please include both username and password to signup.'})
@@ -138,9 +137,7 @@ router.post('/signup', function(req, res) {
             });
         }
     });
-});
 
-router.post('/signin', verifyToken, (req, res) => {
 router.post('/signin', function (req, res) {
     var userNew = new User();
     userNew.username = req.body.username;
@@ -163,7 +160,6 @@ router.post('/signin', function (req, res) {
             })
         })
     });
-});
 
 function verifyToken(req, res, next) {
     var token = req.headers.authorization;
