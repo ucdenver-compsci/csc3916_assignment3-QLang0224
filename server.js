@@ -17,8 +17,7 @@ var Movie = require('./Movies');
 var app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-const MONGO_URI = "mongodb+srv://qlang:test123@assignment3.sacwi5f.mongodb.net/moviesDB?retryWrites=true&w=majority&appName=Assignment3"    
+app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(passport.initialize());
 
 var router = express.Router();
