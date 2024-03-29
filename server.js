@@ -64,7 +64,7 @@ router.post('/movies', (req, res) => {
 
 router.get('/movies', (req, res) => {
     // Check if request body contains required fields
-    if (!req.query.title || !req.query.releaseDate || !req.query.genre || !req.query.actors) {
+    if (!req.params.title || !req.params.releaseDate || !req.params.genre || !req.params.actors) {
         return res.status(400).json({ success: false, message: 'Missing required fields.' }); 
     }});
 
