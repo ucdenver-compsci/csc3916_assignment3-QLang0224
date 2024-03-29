@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise;
 //mongoose.connect(process.env.DB, { useNewUrlParser: true });
 try {
     mongoose.connect( process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true}, () =>
+        mongoose.connection.db.admin().command({ ping: 1 });
         console.log("connected"));
 }catch (error) {
     console.log("could not connect");
