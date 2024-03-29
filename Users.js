@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 //mongoose.connect(process.env.DB, { useNewUrlParser: true });
 try {
-    mongoose.connect( process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true}, () =>
+    mongoose.connect( process.env.DB, clientOptions, () =>
         console.log("connected"));
      mongoose.connection.db.admin().command({ ping: 1 });
 }catch (error) {
