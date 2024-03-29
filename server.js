@@ -18,7 +18,7 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-const MONGO_URI = "mongodb+srv://qlang:test123@assignment3.sacwi5f.mongodb.net/?retryWrites=true&w=majority&appName=Assignment3"
+const MONGO_URI = "mongodb+srv://qlang:test123@assignment3.sacwi5f.mongodb.net/moviesDB?retryWrites=true&w=majority&appName=Assignment3"
     
 app.use(passport.initialize());
 
@@ -46,28 +46,27 @@ router.post('/movies', (req, res) => {
     // Check if request body contains required fields
     if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
         return res.status(400).json({ success: false, message: 'Missing required fields.' });
-    }
-router.get('/movies', (req, res) => {
-    // Check if request body contains required fields
-    if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
-        return res.status(400).json({ success: false, message: 'Missing required fields.' });
-    }
-    
-    const newMovie = new Movie({
+    }});
+     const newMovie = new Movie({
         title: req.body.title,
         releaseDate: req.body.releaseDate,
         genre: req.body.genre,
         actors: req.body.actors
     });
 
-newMovie.save()
-        .then(movie => {
-            res.status(201).json({ success: true, message: 'Movie created successfully.', movie });
-        })
-        .catch(error => {
-            res.status(500).json({ success: false, message: 'Failed to create movie.', error });
-        });
-});
+        newMovie.save()
+            .then(movie => {
+                res.status(201).json({ success: true, message: 'Movie created successfully.', movie });
+            })
+            .catch(error => {
+                res.status(500).json({ success: false, message: 'Failed to create movie.', error });
+            });
+    
+router.get('/movies', (req, res) => {
+    // Check if request body contains required fields
+    if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
+        return res.status(400).json({ success: false, message: 'Missing required fields.' }); 
+    }});
 
 router.get('/movies/:id', (req, res) => {
     Movie.findById(req.params.id)
