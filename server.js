@@ -39,7 +39,7 @@ function getJSONObjectForMovieRequirement(req) {
 
     return json;
 }
-
+router.post('/movies', verifyToken, (req, res) => {
 router.post('/movies', (req, res) => {
     // Check if request body contains required fields
     if (!req.body.title || !req.body.releaseDate || !req.body.genre || !req.body.actors) {
@@ -59,11 +59,12 @@ router.post('/movies', (req, res) => {
             .catch(error => {
                 res.status(500).json({ success: false, message: 'Failed to create movie.', error });
             });
-});
+        });
+    });
 
 router.get('/movies', (req, res) => {
     // Check if request body contains required fields
-    if (!req.params.title || !req.params.releaseDate || !req.params.genre || !req.params.actors) {
+    if (!req.query.title || !req.query.releaseDate || !req.query.genre || !req.query.actors) {
         return res.status(400).json({ success: false, message: 'Missing required fields.' }); 
     }});
 
