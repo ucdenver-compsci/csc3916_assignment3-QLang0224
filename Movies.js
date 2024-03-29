@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+const MONGO_URI = "mongodb+srv://qlang:test123@assignment3.sacwi5f.mongodb.net/moviesDB?retryWrites=true&w=majority&appName=Assignment3"
 mongoose.connect(MONGO_URI);
 
 // Movie schema
